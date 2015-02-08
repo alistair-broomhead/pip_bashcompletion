@@ -31,7 +31,7 @@ $ git clone https://github.com/russel/pip_bashcompletion.git pip_bashcompletion
 
 ### Copy/link the Bash script
 
-In the _auto\_complete_ subdirectory you will find the *pip* bash script and the index generator Python
+In the *pip_bashcompletion* directory you will find the *pip* bash script and the index generator Python
 script. You can either copy or symbolic link the bash script to install it. For global installation the
 target directory is */etc/bash_completion.d*. For personal only installtion (more likely), the target directory
 is *~/bash_completion.d*.
