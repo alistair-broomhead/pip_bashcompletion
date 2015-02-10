@@ -1,3 +1,4 @@
+"""
 # Bash autocomplete for pip
 
 ## Introduction
@@ -73,3 +74,42 @@ Immediate next step deal with command completion.
 ## Licence
 
 This work is licenced under the [MIT licence](http://opensource.org/licenses/MIT).
+
+"""
+
+from setuptools import setup, find_packages
+from sys import argv
+import os.path
+
+if "build" in argv:
+    DIRNAME = os.path.dirname(__file__)
+    README = os.path.join(DIRNAME, "README.md")
+    open(README, 'w').write(__doc__.strip())
+
+setup(
+    name="pip-bash-autocompletion",
+    version="0.0.1",
+    description="Provides autocomplete for python package names.",
+    long_description=__doc__,
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License"
+    ],
+    url='https://github.com/russel/pip_bashcompletion',
+    author='pip-bash-autocomplete authors',
+    keywords='pip',
+    license='MIT',
+    packages=find_packages(),
+    entry_points={
+        "console_scripts": [
+            "pip_update=pip_bash_autocompletion:update"
+        ]
+    }
+)
+
+
+if 'install' in argv:
+    import pip_bash_autocompletion as pkg
+    pkg.install()
+    pkg.update()
