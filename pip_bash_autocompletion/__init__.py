@@ -14,7 +14,8 @@ try:
 except ImportError:
     import xmlrpc.client as xmlrpclib
 
-AUTOCOMPLETE = """_pip() {
+AUTOCOMPLETE = """
+_pip() {
      local cur prev opts
      COMPREPLY=()
      cur="${COMP_WORDS[COMP_CWORD]}"
@@ -25,7 +26,17 @@ AUTOCOMPLETE = """_pip() {
      fi
 
  }
- complete -F _pip pip"""
+_pip_upgrade() {
+     local cur prev opts
+     COMPREPLY=()
+     cur="${COMP_WORDS[COMP_CWORD]}"
+     COMPREPLY=( $( grep ^$cur ~/.pip_index ) )
+     return 0
+
+ }
+ complete -F _pip pip pip2 pip3
+ complete -F _pip_upgrade pip_upgrade
+ """
 
 
 def update():
